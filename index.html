@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<head>
+    <Title>
+        TutoNext.js
+    </Title>
+    <script src='https://unpkg.com/react@16.3.1/umd/react.production.min.js'></script>
+    <script src='https://unpkg.com/react-dom@16.3.1/umd/react-dom.production.min.js'></script>
+    <script src='https://unpkg.com/react-router-dom@5.0.0/umd/react-router-dom.min.js'></script>
+    <script src='https://unpkg.com/babel-standalone@6.26.0/babel.js'></script>
+</head>
+<html>
+    <div id="app">
+        
+    </div>
+    
+    <script type="text/babel">
+
+        class HelloMessage extends React.Component {
+        render() {
+          return (
+            <div>
+              Hello {this.props.name} and my age is {this.props.age}
+            </div>
+          );
+        }
+      }
+        
+    class Timer extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { seconds: 0 };
+    }
+
+    tick() {
+        this.setState(state => ({
+        seconds: state.seconds + 1
+        }));
+    }
+
+    componentDidMount() {
+        this.interval = setInterval(() => this.tick(), 1000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
+    render() {
+        return (
+        <div>
+            Seconds: {this.state.seconds}
+        </div>
+        );
+    }
+}
+    ReactDOM.render(
+        <div>
+            <HelloMessage name="Brayan" age = "19"/>
+            <Timer />   
+        </div>,
+        document.getElementById('app')
+        );
+
+    
+    </script>
+</html>
